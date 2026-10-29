@@ -1,5 +1,7 @@
 package com.fatec.lojinha;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -46,5 +48,19 @@ public class ProdutoController {
         }else{
             return "Registro não existe";
         }
+    }
+
+    @GetMapping("/api/produto/vitrine")
+    public List<Produto> carregarVitrine(){
+        return bd.carregarVitrine();
+    }
+    
+    @GetMapping("/api/produto/busca/{termo}")
+    public List<Produto> buscaProdutos(@PathVariable("termo") String termo){
+        return bd.fazerBuscar("%" + termo + "%");
+    }
+    @GetMapping("/api/produto/semestoque")
+    public List<Produto> carregarSemEstoque(){
+        return bd.carregarSemEstoque();
     }
 }

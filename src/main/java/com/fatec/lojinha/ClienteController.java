@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -48,6 +49,17 @@ public class ClienteController {
             return "Cliente " + id + " excluído com sucesso";
         } else {
             return "Cliente não existe!";
+        }
+    }
+    
+    @PostMapping("/api/cliente/login")
+    public Cliente login(@RequestParam("email") String email, 
+                        @RequestParam("senha") String senha) {
+        Cliente obj = bd.login(email, senha);
+        if (obj != null) {
+            return obj;
+        } else {
+            return new Cliente();
         }
     }
 }

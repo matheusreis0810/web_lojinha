@@ -13,7 +13,21 @@ public class Cliente {
     private String nome;
     private String email;
     private String telefone;
+    private String senha;
+    private int ativo;
 
+    public String getSenha() {
+        return senha;
+    }
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+    public int getAtivo() {
+        return ativo;
+    }
+    public void setAtivo(int ativo) {
+        this.ativo = ativo;
+    }
     public int getCodigo() { 
         return codigo; 
     }
